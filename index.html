@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHYSICS PLAYGROUND | SIMULATOR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.18.0/matter.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-screen text-gray-100 noise">
+    <div class="grid-bg"></div>
+    <div class="scanlines"></div>
+    <div class="corner-accent top-left"></div>
+    <div class="corner-accent top-right"></div>
+    <div class="corner-accent bottom-left"></div>
+    <div class="corner-accent bottom-right"></div>
+    <div class="container mx-auto py-10 px-4 relative">
+        <div class="text-center mb-12">
+            <h1 class="text-6xl font-futuristic font-black neon-text mb-4 glitch" data-text="PHYSICS PLAYGROUND">
+                PHYSICS PLAYGROUND
+            </h1>
+            <div class="title-underline"></div>
+            <p class="mt-4 font-tech text-lg neon-accent-text">
+                PHYSICS SIMULATION ENGINE
+            </p>
+        </div>
+        
+        <div class="flex flex-col lg:flex-row gap-8 mb-10">
+            <div class="flex items-center justify-center">
+                <div class="slider-container">
+                    <div class="text-center font-futuristic text-lg mb-4 text-[#99BDD7] neon-text">
+                        GRAVITY FIELD
+                    </div>
+                    <input type="range" id="G_range" min="-2" max="2" step="0.1" value="1" class="slider-vertical">
+                    <div id="G_value" class="slider-value font-tech">1.0</div>
+                </div>
+            </div>
+            
+            <div class="flex-1 flex flex-col items-center">
+                <div class="controls-container holographic">
+                    <div class="add-buttons">  
+                        <button id="addBall" class="pill-button hover:bg-[#88accc] flex items-center neon-button">
+                            <span class="emoji-container"><span class="emoji">⚪</span></span> 
+                            <span class="font-tech">SPHERE</span>
+                        </button>
+                        <button id="addBox" class="pill-button hover:bg-[#88accc] flex items-center neon-button">
+                            <span class="emoji-container"><span class="emoji">☐</span></span> 
+                            <span class="font-tech">CUBE</span>
+                        </button>
+                        <button id="addTriangle" class="pill-button hover:bg-[#88accc] flex items-center neon-button">
+                            <span class="emoji-container"><span class="emoji">🛆</span></span> 
+                            <span class="font-tech">PYRAMID</span>
+                        </button>
+                    </div>
+                    <button id="reset" class="pill-button reset-button flex items-center neon-button">
+                        <span class="emoji-container"><span class="emoji"><i class="fas fa-redo"></i></span></span> 
+                        <span class="font-tech">SYSTEM RESET</span>
+                    </button>
+                </div>
+                <div class="w-full relative">
+                    <canvas id="physicsCanvas" class="neon-border"></canvas>
+                    <div class="absolute bottom-4 left-4 font-tech text-sm text-[#99BDD7]">
+                        DRAG OBJECTS TO INTERACT
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center justify-center">
+                <div class="slider-container">
+                    <div class="text-center font-futuristic text-lg mb-4 text-[#99BDD7] neon-text">
+                        ELASTICITY
+                    </div>
+                    <input type="range" id="B_range" min="0" max="1" step="0.1" value="0.8" class="slider-vertical">
+                    <div id="B_value" class="slider-value font-tech">0.8</div>
+                </div>
+            </div>
+        </div>
+        <button id="easterEggBtn" class="egg-button floating bg-[#99BDD7] text-[#07090C] font-bold py-4 px-6 rounded-full shadow-lg flex items-center justify-center neon-button">
+            <span class="emoji-container"><span class="emoji"><i class="fas fa-gift"></i></span></span>
+            <span class="font-tech ml-2">SECRET MESSAGE</span>
+        </button>
+    </div>
+    <div id="easterEggModal" class="modal">
+        <div class="modal-content p-10 relative">
+            <button id="closeModal" class="absolute top-6 right-6 text-gray-400 hover:text-white transition-colors">
+                <i class="fas fa-times text-3xl"></i>
+            </button>
+            <div class="text-center mb-8">
+                <div class="inline-block p-4 rounded-full border-2 border-[#00F0FF] mb-6">
+                    <i class="fas fa-chalkboard-teacher text-5xl text-[#00F0FF]"></i>
+                </div>
+                <h2 class="text-3xl font-futuristic text-[#00F0FF] neon-accent-text mb-2">
+                    DEAR BWEB TEACHER,
+                </h2>
+                <div class="w-1/2 h-1 bg-[#00F0FF] mx-auto my-4" style="box-shadow: 0 0 10px #00F0FF;"></div>
+            </div>
+            
+            <div class="space-y-6 text-gray-300 font-tech text-lg leading-relaxed">
+                <p class="text-center">
+                    As You already know, for the first semester we were left without a teacher for both sections and we were given a zero which actually failed a lot of students
+                    And because of you now a lot of students doesn't have to go through the hots of June which we really appreciate.
+                    As some of us come from a game dev background we built this based on one of our games 
+                    although it was hard to pull in JavaScript we took our time and figured it out 
+                    Thank you for helping us transfer our skills from different fields to unite and pull this website off.
+                </p>
+                
+                <div class="text-center mt-10">
+                    <p class="font-futuristic text-xl text-[#00F0FF] neon-accent-text">
+                        WITH DEEPEST GRATITUDE,
+                    </p>
+                    <p class="font-bold text-2xl text-[#99BDD7] mt-2">
+                        YOUR STUDENTS CS MAJOR
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-10 flex justify-center">
+                <div class="flex space-x-6">
+                    <i class="fas fa-atom text-[#00F0FF] text-4xl pulse"></i>
+                    <i class="fas fa-rocket text-[#00F0FF] text-4xl pulse" style="animation-delay: 0.5s;"></i>
+                    <i class="fas fa-lightbulb text-[#00F0FF] text-4xl pulse" style="animation-delay: 1s;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
