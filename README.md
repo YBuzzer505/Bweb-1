@@ -1,5 +1,5 @@
 // this website was designed by Baaziz Youcef and Hamdache Aymen //
-// and built by Djenadi Mohamed //
+// and built by Djenadi Mohammed //
 
 This is a physics engine experiment that lets you interact with objects using your mouse.
 
